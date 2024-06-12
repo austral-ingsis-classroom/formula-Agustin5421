@@ -27,16 +27,6 @@ public class BinaryOperation implements Complex {
   }
 
   @Override
-  public Function getLeft() {
-    return left;
-  }
-
-  @Override
-  public Function getRight() {
-    return right;
-  }
-
-  @Override
   public String getString() {
     String leftString = left.getString();
     String rightString = right.getString();
