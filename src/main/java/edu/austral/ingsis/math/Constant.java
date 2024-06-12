@@ -1,24 +1,26 @@
 package edu.austral.ingsis.math;
 
-public class Constant implements Function {
-      private final Double value;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
 
-      public Constant(Double value) {
-     this.value = value;
-      }
+public record Constant(Double value) implements Function {
 
-      @Override
-      public Function solve() {
-     return this;
-      }
+    @Override
+    public Function solve(Map<String, Double> variablesMap) {
+        return this;
+    }
 
-      @Override
-      public Double getValue() {
-     return value;
-      }
+    @Override
+    public Set<String> getVariables() {
+        return Collections.emptySet();
+    }
 
-      @Override
-      public String getString() {
-     return value.toString();
-      }
+    @Override
+    public String getString() {
+        if (value == value.intValue()) {
+            return String.valueOf(value.intValue());
+        }
+        return value.toString();
+    }
 }

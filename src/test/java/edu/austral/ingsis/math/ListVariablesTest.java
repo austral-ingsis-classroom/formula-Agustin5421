@@ -2,19 +2,20 @@ package edu.austral.ingsis.math;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
-
-import java.util.Collections;
-import java.util.List;
 
 public class ListVariablesTest {
 
   /** Case 1 + 6 */
   @Test
   public void shouldListVariablesFunction1() {
-    final List<String> result = Collections.emptyList();
+    Function addition = Operations.add(new Constant(1d), new Constant(6d));
+    List<String> result = new ArrayList<>(addition.getVariables());
 
     assertThat(result, empty());
   }
@@ -22,7 +23,9 @@ public class ListVariablesTest {
   /** Case 12 / div */
   @Test
   public void shouldListVariablesFunction2() {
-    final List<String> result = Collections.emptyList();
+    Variable div = new Variable("div");
+    Function division = Operations.divide(new Constant(12d), div);
+    List<String> result = new ArrayList<>(division.getVariables());
 
     assertThat(result, containsInAnyOrder("div"));
   }
@@ -30,7 +33,11 @@ public class ListVariablesTest {
   /** Case (9 / x) * y */
   @Test
   public void shouldListVariablesFunction3() {
-    final List<String> result = Collections.emptyList();
+    Variable x = new Variable("x");
+    Variable y = new Variable("y");
+    Function division = Operations.divide(new Constant(9d), x);
+    Function multiplication = Operations.multiply(division, y);
+    List<String> result = new ArrayList<>(multiplication.getVariables());
 
     assertThat(result, containsInAnyOrder("x", "y"));
   }
@@ -38,7 +45,11 @@ public class ListVariablesTest {
   /** Case (27 / a) ^ b */
   @Test
   public void shouldListVariablesFunction4() {
-    final List<String> result = Collections.emptyList();
+    Variable a = new Variable("a");
+    Variable b = new Variable("b");
+    Function division = Operations.divide(new Constant(27d), a);
+    Function power = Operations.power(division, b);
+    List<String> result = new ArrayList<>(power.getVariables());
 
     assertThat(result, containsInAnyOrder("a", "b"));
   }
@@ -46,7 +57,9 @@ public class ListVariablesTest {
   /** Case z ^ (1/2) */
   @Test
   public void shouldListVariablesFunction5() {
-    final List<String> result = Collections.emptyList();
+    Variable z = new Variable("z");
+    Function sqrt = Operations.sqrt(z);
+    List<String> result = new ArrayList<>(sqrt.getVariables());
 
     assertThat(result, containsInAnyOrder("z"));
   }
@@ -54,7 +67,10 @@ public class ListVariablesTest {
   /** Case |value| - 8 */
   @Test
   public void shouldListVariablesFunction6() {
-    final List<String> result = Collections.emptyList();
+    Variable value = new Variable("value");
+    Function absValue = Operations.add(value, new Constant(0d));
+    Function subtraction = Operations.subtract(absValue, new Constant(8d));
+    List<String> result = new ArrayList<>(subtraction.getVariables());
 
     assertThat(result, containsInAnyOrder("value"));
   }
@@ -62,7 +78,10 @@ public class ListVariablesTest {
   /** Case |value| - 8 */
   @Test
   public void shouldListVariablesFunction7() {
-    final List<String> result = Collections.emptyList();
+    Variable value = new Variable("value");
+    Function absValue = Operations.add(value, new Constant(0d));
+    Function subtraction = Operations.subtract(absValue, new Constant(8d));
+    List<String> result = new ArrayList<>(subtraction.getVariables());
 
     assertThat(result, containsInAnyOrder("value"));
   }
@@ -70,7 +89,10 @@ public class ListVariablesTest {
   /** Case (5 - i) * 8 */
   @Test
   public void shouldListVariablesFunction8() {
-    final List<String> result = Collections.emptyList();
+    Variable i = new Variable("i");
+    Function subtraction = Operations.subtract(new Constant(5d), i);
+    Function multiplication = Operations.multiply(subtraction, new Constant(8d));
+    List<String> result = new ArrayList<>(multiplication.getVariables());
 
     assertThat(result, containsInAnyOrder("i"));
   }
