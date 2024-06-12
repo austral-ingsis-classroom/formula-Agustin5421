@@ -1,3 +1,7 @@
 package edu.austral.ingsis.math;
 
-public interface Function {}
+public interface Function {
+    Function solve ();
+    String getString();
+    Double getValue();
+}
