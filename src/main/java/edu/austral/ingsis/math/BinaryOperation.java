@@ -12,7 +12,11 @@ public class BinaryOperation implements Complex {
   private final BiFunction<Double, Double, Double> operation;
   private final String operatorSymbol;
 
-  public BinaryOperation(Function left, Function right, BiFunction<Double, Double, Double> operation, String operatorSymbol) {
+  public BinaryOperation(
+      Function left,
+      Function right,
+      BiFunction<Double, Double, Double> operation,
+      String operatorSymbol) {
     this.left = left;
     this.right = right;
     this.operation = operation;
@@ -30,11 +34,11 @@ public class BinaryOperation implements Complex {
   public String getString() {
     String leftString = left.getString();
     String rightString = right.getString();
-    if (left instanceof Complex){
+    if (left instanceof Complex) {
       leftString = "(" + leftString + ")";
     }
     if (right instanceof Complex) {
-        rightString = "(" + rightString + ")";
+      rightString = "(" + rightString + ")";
     }
     return leftString + " " + operatorSymbol + " " + rightString;
   }
@@ -50,5 +54,4 @@ public class BinaryOperation implements Complex {
     variables.addAll(right.getVariables());
     return variables;
   }
-
 }

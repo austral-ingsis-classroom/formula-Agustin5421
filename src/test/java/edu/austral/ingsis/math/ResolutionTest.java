@@ -1,18 +1,18 @@
 package edu.austral.ingsis.math;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.Collections;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.util.Collections;
+import org.junit.jupiter.api.Test;
 
 public class ResolutionTest {
 
   /** Case 1 + 6 */
   @Test
   public void shouldResolveSimpleFunction1() {
-    Function addition = Operations.add(new Constant(1d), new Constant(6d)).solve(Collections.emptyMap());
+    Function addition =
+        Operations.add(new Constant(1d), new Constant(6d)).solve(Collections.emptyMap());
     Double result = addition.value();
 
     assertThat(result, equalTo(7d));
@@ -54,7 +54,6 @@ public class ResolutionTest {
     Double result = sqrt.solve(Collections.emptyMap()).value();
 
     assertThat(result, equalTo(6d));
-
   }
 
   /** Case |136| */
