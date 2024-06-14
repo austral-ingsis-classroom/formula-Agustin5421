@@ -1,0 +1,68 @@
+@startuml
+
+interface Function{
+  +solve(Map<String, Double> variablesMap): Function
+  +getString(): String
+  +value(): Double
+  +getVariables(): Set<String>
+}
+
+interface Complex extends Function{
+  solve(Map<String, Double> variablesMap): Function
+}
+
+class BinaryOperation implements Complex{
+    +BinaryOperation (Function left, Function right, BiFunction<Double, Double, Double> operation, String operatorSymbol)
+    +solve(Map<String, Double> variablesMap): Function
+    +getString(): String
+    +value(): Double
+    +getVariables(): Set<String>
+}
+
+class UnaryOperation implements Function{
+    +UnaryOperation(Function operand, Function<Double, Double> operation, String operatorSymbol)
+    +solve(Map<String, Double> variablesMap)
+    +getString(): String
+    +value(): Double
+    +getVariables(): Set<String>
+}
+
+class Variable implements Function{
+    +solve(Map<String, Double> variablesMap)
+    +getString(): String
+    +setValue(Double value)
+    +value(): Double
+    +getVariables(): Set<String>
+}
+
+class Constant implements Function{
+    +solve(Map<String, Double> variablesMap)
+    +getString(): String
+    +value(): Double
+    +getVariables(): Set<String>
+    +equals: boolean
+}
+
+class ModuleOperation extends UnaryOperation{
+    +getString(): String
+ }
+
+class Operations{
+  add(Function left, Function right): BinaryOperation
+  subtract(Function left, Function right): BinaryOperation
+  multiply(Function left, Function right): BinaryOperation
+  divide(Function left, Function right): BinaryOperation
+  power(Function left, Function right): BinaryOperation
+  module(Function function1): ModuleOperation
+  sqrt(Function function1): UnaryOperation
+}
+
+
+
+
+Operations ----- BinaryOperation
+Operations -- UnaryOperation
+Operations -- ModuleOperation
+
+
+@enduml
