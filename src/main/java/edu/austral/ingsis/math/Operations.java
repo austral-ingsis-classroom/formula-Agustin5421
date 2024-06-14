@@ -27,6 +27,6 @@ public class Operations {
   }
 
   public static UnaryOperation sqrt(Function operand) {
-    return new UnaryOperation(operand, Math::sqrt, "√");
+    return new UnaryOperation(operand, Math::sqrt, "sqrt");
   }
 }
