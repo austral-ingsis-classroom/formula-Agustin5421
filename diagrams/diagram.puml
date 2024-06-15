@@ -48,13 +48,13 @@ class ModuleOperation extends UnaryOperation{
  }
 
 class Operations{
-  add(Function left, Function right): BinaryOperation
-  subtract(Function left, Function right): BinaryOperation
-  multiply(Function left, Function right): BinaryOperation
-  divide(Function left, Function right): BinaryOperation
-  power(Function left, Function right): BinaryOperation
-  module(Function function1): ModuleOperation
-  sqrt(Function function1): UnaryOperation
+  +add(Function left, Function right): BinaryOperation
+  +subtract(Function left, Function right): BinaryOperation
+  +multiply(Function left, Function right): BinaryOperation
+  +divide(Function left, Function right): BinaryOperation
+  +power(Function left, Function right): BinaryOperation
+  +module(Function function1): ModuleOperation
+  +sqrt(Function function1): UnaryOperation
 }
 
 
